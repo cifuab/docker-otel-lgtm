@@ -1,16 +1,16 @@
 # hadolint global ignore=DL3059
-FROM redhat/ubi9:9.5-1738814488
+FROM redhat/ubi9:9.5-1739751568
 
 # renovate: datasource=github-releases depName=grafana packageName=grafana/grafana
-ENV GRAFANA_VERSION=v11.5.1
+ENV GRAFANA_VERSION=v11.5.2
 # renovate: datasource=github-releases depName=prometheus packageName=prometheus/prometheus
-ENV PROMETHEUS_VERSION=v3.1.0
+ENV PROMETHEUS_VERSION=v3.2.1
 # renovate: datasource=github-releases depName=tempo packageName=grafana/tempo
-ENV TEMPO_VERSION=v2.7.0
+ENV TEMPO_VERSION=v2.7.1
 # renovate: datasource=github-releases depName=loki packageName=grafana/loki
-ENV LOKI_VERSION=v3.3.2
+ENV LOKI_VERSION=v3.4.2
 # renovate: datasource=github-releases depName=opentelemetry-collector packageName=open-telemetry/opentelemetry-collector-releases
-ENV OPENTELEMETRY_COLLECTOR_VERSION=v0.119.0
+ENV OPENTELEMETRY_COLLECTOR_VERSION=v0.120.0
 
 # TARGETARCH is automatically detected and set by the Docker daemon during the build process. If the build starts
 # on an amd64 architecture, than the TARGETARCH will be set to `amd64`.
@@ -67,7 +67,7 @@ COPY loki-config.yaml .
 COPY run-loki.sh .
 COPY tempo-config.yaml .
 COPY run-tempo.sh .
-COPY otelcol-config.yaml .
+COPY otelcol-config*.yaml .
 COPY run-otelcol.sh .
 COPY run-all.sh .
 # hadolint ignore=SC2038,DL4006
